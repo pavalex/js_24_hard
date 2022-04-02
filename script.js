@@ -1,35 +1,33 @@
-"use strict";
+// item 1
+const arr = ['237', '356', '45', '2465', '362', '72', '459'];
 
-/* Lesson 3 */
-
-// Unit 1
-const lang = 'en'; // ru
-const langArray = [];
-
-if (lang === 'ru') {
-    console.log('понедельник, вторник, среда, четверг, пятница, суббота, воскресенье');
-} else if (lang === 'en') {
-    console.log('monday, tuesday, wednesday, thursday, friday, saturday, sunday');
-} else {
-    console.log('oops..');
+for (let i = 0; i < arr.length; i++) {
+    if (arr[i].startsWith('2') || arr[i].startsWith('4')) {
+        console.log(arr[i]);
+    }
 }
 
-switch (lang) {
-    case 'ru':
-        console.log('понедельник, вторник, среда, четверг, пятница, суббота, воскресенье');
-        break;
-    case 'en':
-        console.log('monday, tuesday, wednesday, thursday, friday, saturday, sunday');
-        break;
-    default:
-        console.log('oops..');
+// item 2
+let number = 100;
+
+const isSimple = function(num) {
+    if (num < 2) {
+        return false;
+    }
+
+    for (let i = 2; i < num; i++) {
+        if (num % i === 0) {
+            return false;
+        }
+    }
+
+    return true;
+};
+
+for (let i = 0; i < number; i++) {
+    if (isSimple(i)) {
+        console.log(`${i} - Делители этого числа: 1 и ${i}`);
+    }        
 }
 
-langArray['ru'] = ['понедельник, вторник, среда, четверг, пятница, суббота, воскресенье'];
-langArray['en'] = ['monday, tuesday, wednesday, thursday, friday, saturday, sunday'];
-console.log(langArray[lang]);
 
-// Unit 2
-const namePerson = 'Артем'; // Александр, и другие
-
-namePerson === 'Артем' ? console.log('директор') : (namePerson === 'Александр' ? console.log('преподаватель') : console.log('студент'));

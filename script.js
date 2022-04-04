@@ -1,35 +1,26 @@
 "use strict";
 
-/* Lesson 3 */
+const week = ['понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота', 'воскресенье'];
+const todayDay = new Date();
 
-// Unit 1
-const lang = 'en'; // ru
-const langArray = [];
+const days = {
+    1: 'понедельник',
+    2: 'вторник',
+    3: 'среда',
+    4: 'четверг',
+    5: 'пятница',
+    6: 'суббота',
+    7: 'воскресенье',
+};
 
-if (lang === 'ru') {
-    console.log('понедельник, вторник, среда, четверг, пятница, суббота, воскресенье');
-} else if (lang === 'en') {
-    console.log('monday, tuesday, wednesday, thursday, friday, saturday, sunday');
-} else {
-    console.log('oops..');
-}
+const newWeek = week.map(function(item) {
+    if (item === 'суббота' || item === 'воскресенье') {
+        item = item.italics();
+    }
+    if (item === days[todayDay.getDay()]) {
+        item = item.bold();
+    }
+    return item;
+});
 
-switch (lang) {
-    case 'ru':
-        console.log('понедельник, вторник, среда, четверг, пятница, суббота, воскресенье');
-        break;
-    case 'en':
-        console.log('monday, tuesday, wednesday, thursday, friday, saturday, sunday');
-        break;
-    default:
-        console.log('oops..');
-}
-
-langArray['ru'] = ['понедельник, вторник, среда, четверг, пятница, суббота, воскресенье'];
-langArray['en'] = ['monday, tuesday, wednesday, thursday, friday, saturday, sunday'];
-console.log(langArray[lang]);
-
-// Unit 2
-const namePerson = 'Артем'; // Александр, и другие
-
-namePerson === 'Артем' ? console.log('директор') : (namePerson === 'Александр' ? console.log('преподаватель') : console.log('студент'));
+document.write(newWeek.join('<br>'));

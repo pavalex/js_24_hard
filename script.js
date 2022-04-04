@@ -1,26 +1,24 @@
 "use strict";
 
-const week = ['понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота', 'воскресенье'];
+const week = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'];
+const days = document.querySelector('#days'); 
 const todayDay = new Date();
 
-const days = {
-    1: 'понедельник',
-    2: 'вторник',
-    3: 'среда',
-    4: 'четверг',
-    5: 'пятница',
-    6: 'суббота',
-    7: 'воскресенье',
+const getDays = function () {
+    week.forEach(function (item, i) {
+        const createDiv = document.createElement('div');
+        if (i === +todayDay.getDay()-1) { 
+            createDiv.classList.add('today');
+            createDiv.textContent = week[i];
+        }
+        if (item === 'Суббота' || item === 'Воскресенье') { 
+            createDiv.classList.add('italic'); 
+            createDiv.textContent = week[i]; 
+        } else {
+            createDiv.textContent = week[i]; 
+        }
+        days.appendChild(createDiv); 
+    });
 };
 
-const newWeek = week.map(function(item) {
-    if (item === 'суббота' || item === 'воскресенье') {
-        item = item.italics();
-    }
-    if (item === days[todayDay.getDay()]) {
-        item = item.bold();
-    }
-    return item;
-});
-
-document.write(newWeek.join('<br>'));
+getDays();

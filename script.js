@@ -1,35 +1,45 @@
 "use strict";
 
-/* Lesson 3 */
+const time = document.querySelector('#time');
+const time1 = document.querySelector('#time1');
+let hour,
+    zeroMonth,
+    zeroDate,
+    zeroHours,
+    zeroMinutes,
+    zeroSeconds = '';
+const days = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
+const months = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
 
-// Unit 1
-const lang = 'en'; // ru
-const langArray = [];
 
-if (lang === 'ru') {
-    console.log('понедельник, вторник, среда, четверг, пятница, суббота, воскресенье');
-} else if (lang === 'en') {
-    console.log('monday, tuesday, wednesday, thursday, friday, saturday, sunday');
-} else {
-    console.log('oops..');
-}
+setInterval(function() {
+    let nowDate = new Date();
+    
+    const lengthDate = function (param) {
+        let varZero;
+        if (param === 1) {
+            varZero = '0';
+        } else {
+            varZero = '';
+        }  
 
-switch (lang) {
-    case 'ru':
-        console.log('понедельник, вторник, среда, четверг, пятница, суббота, воскресенье');
-        break;
-    case 'en':
-        console.log('monday, tuesday, wednesday, thursday, friday, saturday, sunday');
-        break;
-    default:
-        console.log('oops..');
-}
+        return varZero;
+    };
 
-langArray['ru'] = ['понедельник, вторник, среда, четверг, пятница, суббота, воскресенье'];
-langArray['en'] = ['monday, tuesday, wednesday, thursday, friday, saturday, sunday'];
-console.log(langArray[lang]);
+    zeroMonth = lengthDate(nowDate.getMonth().toString().length);
+    zeroDate = lengthDate(nowDate.getDate().toString().length);
+    zeroHours = lengthDate(nowDate.getHours().toString().length);
+    zeroMinutes = lengthDate(nowDate.getMinutes().toString().length);
+    zeroSeconds = lengthDate(nowDate.getSeconds().toString().length);
 
-// Unit 2
-const namePerson = 'Артем'; // Александр, и другие
+    if ((nowDate.getHours() >= 2 && nowDate.getHours() <= 4) || (nowDate.getHours() > 21 && nowDate.getHours() <= 24)) {
+        hour = 'часа';
+    } else if (nowDate.getHours() > 4 && nowDate.getHours() <= 20) {
+        hour = 'часов';
+    } else {
+        hour = 'час';
+    }
 
-namePerson === 'Артем' ? console.log('директор') : (namePerson === 'Александр' ? console.log('преподаватель') : console.log('студент'));
+    time.innerHTML = `Сегодня ${days[nowDate.getDay()]}, ${nowDate.getDate()} ${months[nowDate.getMonth()]} ${nowDate.getFullYear()} года, ${nowDate.getHours()} ${hour} ${nowDate.getMinutes()} минут ${nowDate.getSeconds()} секунды `;
+	time1.innerHTML = `${zeroDate}${nowDate.getDate()}.${zeroMonth}${nowDate.getMonth() + 1}.${nowDate.getFullYear()} - ${zeroHours}${nowDate.getHours()}:${zeroMinutes}${nowDate.getMinutes()}:${zeroSeconds}${nowDate.getSeconds()}`;
+}, 1000);

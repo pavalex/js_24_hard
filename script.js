@@ -3,12 +3,7 @@
 const time = document.querySelector('#time');
 const time1 = document.querySelector('#time1');
 const delay = 1000;
-let hour,
-    zeroMonth,
-    zeroDate,
-    zeroHours,
-    zeroMinutes,
-    zeroSeconds = '';
+let hour = '';
 
 const timer = function () {
     let nowDate = new Date();

@@ -22,7 +22,7 @@ const timer = function () {
     }
 
     time.innerHTML = `Сегодня ${nowDate.toLocaleDateString('ru', {weekday: 'long'})}, ${nowDate.getDate()} ${nowDate.toLocaleDateString('ru', {month: 'long'})} ${nowDate.getFullYear()} года, ${nowDate.getHours()} ${hour} ${nowDate.getMinutes()} минут ${nowDate.getSeconds()} секунды `;
-	time1.innerHTML = `${nowDate.toLocaleDateString()} - ${nowDate.toLocaleTimeString()}`;
+    time1.innerHTML = `${nowDate.toLocaleDateString()} - ${nowDate.toLocaleTimeString()}`;
 };
 
 timer();

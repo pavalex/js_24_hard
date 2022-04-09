@@ -9,9 +9,6 @@ let hour,
     zeroHours,
     zeroMinutes,
     zeroSeconds = '';
-const days = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
-const months = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
-
 
 const timer = function () {
     let nowDate = new Date();
@@ -24,7 +21,7 @@ const timer = function () {
         hour = 'час';
     }
 
-    time.innerHTML = `Сегодня ${days[nowDate.getDay()]}, ${nowDate.getDate()} ${months[nowDate.getMonth()]} ${nowDate.getFullYear()} года, ${nowDate.getHours()} ${hour} ${nowDate.getMinutes()} минут ${nowDate.getSeconds()} секунды `;
+    time.innerHTML = `Сегодня ${nowDate.toLocaleDateString('ru', {weekday: 'long'})}, ${nowDate.getDate()} ${nowDate.toLocaleDateString('ru', {month: 'long'})} ${nowDate.getFullYear()} года, ${nowDate.getHours()} ${hour} ${nowDate.getMinutes()} минут ${nowDate.getSeconds()} секунды `;
 	time1.innerHTML = `${nowDate.toLocaleDateString()} - ${nowDate.toLocaleTimeString()}`;
 };
 

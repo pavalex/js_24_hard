@@ -9,15 +9,22 @@ const timer = function () {
     let nowDate = new Date();
 
     const words = function (number, arr) {
-        if ((number >= 2 && number <= 4) || (number > 21 && number <= 24) || (number > 31 && number <= 34) || (number > 41 && number <= 44) || (number > 51 && number <= 54)) {
-            timeText = arr[1];
-        } else if ((number > 4 && number <= 20) || (number > 24 && number <= 30) || (number > 34 && number <= 40) || (number > 44 && number <= 50) || number > 54 || number === 0) {
-            timeText = arr[2];
-        } else {
-            timeText = arr[0];
-        }
+        let count = Math.abs(number) % 100;
+        let count1 = count % 10;
 
-        return `${number} ${timeText}`;
+        switch (true) {
+            case (count > 10 && count < 20):
+                return `${number} ${arr[2]}`;
+            
+            case (count1 > 1 && count1 < 5):
+                return `${number} ${arr[1]}`;
+
+            case (count1 === 1):
+                return `${number} ${arr[0]}`;
+                
+            default:
+                return `${number} ${arr[2]}`;
+        }
     };
 
     const hours = words(nowDate.getHours(), ['час', 'часа', 'часов']);

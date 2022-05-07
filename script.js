@@ -1,35 +1,40 @@
-"use strict";
+const box = document.querySelector(".box");
+const square = document.querySelector(".square");
+const start = document.querySelector('.start');
+const reset = document.querySelector('.reset');
 
-/* Lesson 3 */
+let active = false;
+let count = 0;
+let idInterval;
 
-// Unit 1
-const lang = 'en'; // ru
-const langArray = [];
+function myAnimation() {
+    count++;
+    idInterval = requestAnimationFrame(myAnimation);
 
-if (lang === 'ru') {
-    console.log('понедельник, вторник, среда, четверг, пятница, суббота, воскресенье');
-} else if (lang === 'en') {
-    console.log('monday, tuesday, wednesday, thursday, friday, saturday, sunday');
-} else {
-    console.log('oops..');
+    if (count > 360) {
+        count = 0;
+    }
+
+    square.style.transform = `rotate(${count}deg)`;
+    box.style.transform = `rotate(${count}deg)`;
+    console.log(count)
 }
 
-switch (lang) {
-    case 'ru':
-        console.log('понедельник, вторник, среда, четверг, пятница, суббота, воскресенье');
-        break;
-    case 'en':
-        console.log('monday, tuesday, wednesday, thursday, friday, saturday, sunday');
-        break;
-    default:
-        console.log('oops..');
-}
+start.addEventListener('click', () => {
+   if (active) {
+       cancelAnimationFrame(idInterval);
+       active = false;
+   } else {
+       idInterval = requestAnimationFrame(myAnimation);
+       active = true;
+   }
+});
 
-langArray['ru'] = ['понедельник, вторник, среда, четверг, пятница, суббота, воскресенье'];
-langArray['en'] = ['monday, tuesday, wednesday, thursday, friday, saturday, sunday'];
-console.log(langArray[lang]);
+reset.addEventListener('click', () => {
+    box.style.top = '';
+    box.style.left = '';
+    square.style.transform = '';
+    box.style.transform = '';
+});
 
-// Unit 2
-const namePerson = 'Артем'; // Александр, и другие
 
-namePerson === 'Артем' ? console.log('директор') : (namePerson === 'Александр' ? console.log('преподаватель') : console.log('студент'));

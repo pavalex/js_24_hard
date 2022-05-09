@@ -23,9 +23,11 @@ function myAnimation() {
 start.addEventListener('click', () => {
    if (active) {
        cancelAnimationFrame(idInterval);
+       start.textContent = 'Start';
        active = false;
    } else {
        idInterval = requestAnimationFrame(myAnimation);
+       start.textContent = 'Stop';
        active = true;
    }
 });

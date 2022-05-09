@@ -15,6 +15,17 @@ h1 {
     margin-bottom: 30px;
 }
 
-.info {
+.info,
+.info2 {
     text-align: center;
+}
+
+fieldset {
+    width: 500px;
+    height: 50px;
+    margin-bottom: 20px;
+}
+
+.red {
+    color: red;
 }
